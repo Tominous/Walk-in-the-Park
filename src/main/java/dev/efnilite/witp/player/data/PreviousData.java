@@ -30,9 +30,9 @@ public class PreviousData {
         this.hunger = player.getFoodLevel();
         this.health = player.getHealth();
         saveInventory();
-//        speed = player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getValue();
+        speed = player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getValue();
         
-//        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.1); unsure whether this is the actual value
+        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.1); unsure whether this is the actual value
         for (PotionEffectType value : PotionEffectType.values()) {
             player.removePotionEffect(value);
         }
@@ -48,7 +48,7 @@ public class PreviousData {
         player.setHealth(health);
         player.setFoodLevel(hunger);
         player.setGameMode(gamemode);
-//        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
+        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
         if (Option.INVENTORY_HANDLING) {
             player.getInventory().clear();
             for (int slot : inventory.keySet()) {
