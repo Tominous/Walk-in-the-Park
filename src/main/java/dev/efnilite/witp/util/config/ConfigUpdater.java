@@ -44,14 +44,14 @@ public class ConfigUpdater {
 
         List<String> ignoredSectionsArrayList = new ArrayList<>(ignoredSections);
         //ignoredSections can ONLY contain configurations sections
-//        if (resourceName.contains("lang")) {
-//            List<String> strings = Arrays.asList("en", "pl", "fr", "zh_CN", "es", "nl", "default");
-//            List<String> dontUpdateLangs = Util.getNode(oldConfig, "messages");
-//            dontUpdateLangs.removeIf(strings::contains);
-//            ignoredSectionsArrayList.addAll(dontUpdateLangs);
-//        } else {
+        if (resourceName.contains("lang")) {
+            List<String> strings = Arrays.asList("en", "pl", "fr", "zh_CN", "es", "nl", "default");
+            List<String> dontUpdateLangs = Util.getNode(oldConfig, "messages");
+            dontUpdateLangs.removeIf(strings::contains);
+            ignoredSectionsArrayList.addAll(dontUpdateLangs);
+        } else {
         ignoredSectionsArrayList.removeIf(ignoredSection -> !newConfig.isConfigurationSection(ignoredSection));
-//        }
+        }
 
         Yaml yaml = new Yaml();
         Map<String, String> comments = parseComments(newLines, ignoredSectionsArrayList, oldConfig, yaml);
